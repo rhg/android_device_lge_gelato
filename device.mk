@@ -109,6 +109,11 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/sbin/ftm_power:root/sbin/ftm_power \
 
+# Offmode charging
+RODUCT_COPY_FILES += $(LOCAL_PATH)/recovery/rmt_storage/rmt_storage:root/sbin/rmt_storage
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
 
 # Backlight
 PRODUCT_COPY_FILES += \
@@ -266,6 +271,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/idc/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc\
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
+# Apps
+PRODUCT_COPY_FILES += \
+    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/apps/LauncherPro.apk:system/app/LauncherPro.apk
 
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=BobZics
