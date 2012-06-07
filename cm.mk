@@ -1,5 +1,5 @@
 # Release name
-PRODUCT_RELEASE_NAME := OptimusV
+PRODUCT_RELEASE_NAME := OptimusSlider
 
 TARGET_BOOTANIMATION_NAME := vertical-320x480
 
@@ -12,13 +12,13 @@ $(call inherit-product, vendor/qcom/opensource/omx/mm-core/Android.mk)
 $(call inherit-product, vendor/qcom/opensource/omx/mm-video/Android.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/lge/thunderc/full_thunderc.mk)
+$(call inherit-product, device/lge/gelato/full_gelato.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := thunderc
-PRODUCT_NAME := cm_thunderc
+PRODUCT_DEVICE := gelato
+PRODUCT_NAME := cm_gelato
 PRODUCT_BRAND := Virgin_Mobile
-PRODUCT_MODEL := VM670
+PRODUCT_MODEL := VM710
 PROUDCT_MANUFACTURER := LGE
 PRODUCT_CHARACTERISTICS := phone
 

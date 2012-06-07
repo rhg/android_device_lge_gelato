@@ -15,7 +15,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # This is where we'd set a backup provider if we had one
 #$(call inherit-product, device/sample/products/backup_overlay.mk)
-$(call inherit-product, device/lge/thunderc/device.mk)
+$(call inherit-product, device/lge/gelato/device.mk)
 
 # Screen density is actually considered a locale (since it is taken into account
 # the the build-time selection of resources). The product definitions including 
@@ -24,8 +24,8 @@ $(call inherit-product, device/lge/thunderc/device.mk)
 PRODUCT_LOCALES += mdpi
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := cm_thunderc
-PRODUCT_DEVICE := thunderc
-PRODUCT_BRAND := Android
-PRODUCT_MODEL := VM670
+PRODUCT_NAME := full_gelato
+PRODUCT_DEVICE := gelato
+PRODUCT_BRAND := Virgin_Mobile
+PRODUCT_MODEL := VM701
 PROUDCT_MANUFACTURER := LGE

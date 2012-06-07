@@ -267,14 +267,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
 
-
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=BobZics
-PRODUCT_NAME := full_thunderc
-PRODUCT_DEVICE := thunderc
-PRODUCT_BRAND := LGE
-PRODUCT_MODEL := VM670
-PRODUCT_MANUFACTURER := LGE
-
 CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Virgin_Mobile
 CDMA_CARRIER_NUMERIC := 311490
