@@ -20,5 +20,6 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo cm_thunderc-eng
-add_lunch_combo cm_thunderc-userdebug
+add_lunch_combo cm_gelato-eng
+#Someday
+#add_lunch_combo cm_gelato-userdebug
