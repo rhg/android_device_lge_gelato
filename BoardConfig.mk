@@ -3,7 +3,7 @@
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB := true
 
-include vendor/lge/thunderc/BoardConfigVendor.mk
+-include vendor/lge/gelato/BoardConfigVendor.mk
 
 #Device Information
 TARGET_ARCH := arm
@@ -22,8 +22,8 @@ TARGET_ARCH_VARIANT := armv6-vfp
 #Boot and Bootloader
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_BOOTLOADER_BOARD_NAME := thunderc
-TARGET_OTA_ASSERT_DEVICE := thunderc
+TARGET_BOOTLOADER_BOARD_NAME := gelato
+TARGET_OTA_ASSERT_DEVICE := gelato
 
 #Camera
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
@@ -38,13 +38,13 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
 #FM Radio
-BOARD_FM_DEVICE := bcm4325
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+#BOARD_FM_DEVICE := bcm4325
+#BOARD_HAVE_FM_RADIO := true
+#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #Wifi
 BOARD_WPA_SUPPLICANT_DRIVER     := WEXT
-BOARD_WLAN_DEVICE               := bcm4325
+BOARD_WLAN_DEVICE               := bcm4330
 WPA_SUPPLICANT_VERSION          := VER_0_6_X
 HOSTAPD_VERSION                 := VER_0_6_X
 WIFI_DRIVER_MODULE_PATH         := "/system/lib/modules/wireless.ko"
@@ -57,17 +57,17 @@ BOARD_WEXT_NO_COMBO_SCAN        := true
 
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
-#TARGET_KERNEL_CONFIG := chaos_defconfig
-TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/BobZ/zImage
-TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
-BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=thunderc
+TARGET_KERNEL_CONFIG := gelato-perf_defconfig
+#TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/BobZ/zImage
+#TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
+BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=gelato
 BOARD_KERNEL_BASE := 0x12200000
 BOARD_KERNEL_PAGESIZE := 2048
 
-BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00700000
+BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00500000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00700000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0a480000
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0b2e0000
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x09a00000
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0b500000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 #Qualcomm Related
@@ -89,7 +89,7 @@ ENABLE_JSC_JIT := true
 
 #Enable OpenGL Hardware Acceleration
 #msm7x27: no support for overlay, bypass, or c2d
-BOARD_EGL_CFG := vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USE_OVERLAY := false
 TARGET_HAVE_BYPASS := false
@@ -103,7 +103,7 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 #Mass Storage
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-BOARD_CUSTOM_USB_CONTROLLER := ../../vendor/lge/thunderc/proprietary/$(SUB_MODEL)/UsbController.cpp
+#BOARD_CUSTOM_USB_CONTROLLER := ../../vendor/lge/thunderc/proprietary/$(SUB_MODEL)/UsbController.cpp
 BOARD_UMS_LUNFILE := /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun0/file
 BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/vold/179:1
@@ -118,7 +118,7 @@ COMMON_GLOBAL_CFLAGS += -DUSE_LGE_ALS_DUMMY
 BOARD_USE_SKIA_LCDTEXT := true
 
 #Misc
-BOARD_HAS_NO_SELECT_BUTTON := true
+#BOARD_HAS_NO_SELECT_BUTTON := true
 #BOARD_CUSTOM_BRCM_PATCHRAM_PLUS := ../../../vendor/lge/thunderc/proprietary/$(SUB_MODEL)/brcm_patchram_plus.c
 
 #OFFLINE CHARGING
