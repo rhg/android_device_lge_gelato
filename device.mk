@@ -2,9 +2,9 @@ PRODUCT_AAPT_CONFIG := normal mdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi 
 
 # XXX
-SUB_MODEL := VM701
-ifeq ($(SUB_MODEL),VM701)
-	BT_FIRMWARE = BCM4330_
+SUB_MODEL := LGL55C
+ifeq ($(SUB_MODEL),LGL55C)
+	BT_FIRMWARE = BCM4330B1_002.001.003.0221.0269.hcd
 endif
 
 # XXX: should be full_base_telephony?
