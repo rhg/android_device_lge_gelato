@@ -8,7 +8,7 @@ ifeq ($(SUB_MODEL),LGL55C)
 endif
 
 # XXX: should be full_base_telephony?
-$(call inherit-product, build/target/product/full.mk)
+$(call inherit-product, build/target/product/full_base_telephony.mk)
 
 $(call inherit-product, build/target/product/languages_small.mk)
 $(call inherit-product, vendor/cm/config/common_mini_phone.mk)
@@ -25,15 +25,15 @@ $(call inherit-product, frameworks/base/build/phone-hdpi-512-dalvik-heap.mk)
 DEVICE_PACKAGE_OVERLAYS += device/lge/gelato/overlay
 
 # XXX: this is non-standard
-#LOCAL_KERNEL_DIR := device/lge/thunderc/kernels/BobZ
-#LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko cifs.ko
+LOCAL_KERNEL_DIR := device/lge/gelato/kernels/rhg135/$(SUB_MODEL)
+LOCAL_KERNEL_MODULES := librasdioif.ko tun.ko wireless.ko cifs.ko
 	
 
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_KERNEL_DIR)/zImage:kernel
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL_DIR)/zImage:kernel
 
-#PRODUCT_COPY_FILES += \
-#    $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
+PRODUCT_COPY_FILES += \
+    $(foreach f,$(LOCAL_KERNEL_MODULES),$(LOCAL_KERNEL_DIR)/$(f):system/lib/modules/$(f)) \
     
 
 # Publish that we support the live wallpaper feature.
@@ -44,12 +44,12 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/init.qcom.sh:root/init.qcom.sh \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/init.gelato.rc:root/init.gelato.rc \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/initlogo.rle:root/initlogo.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/ueventd.gelato.rc:root/ueventd.gelato.rc \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/initlogo.rle:root/initlogo.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/ueventd.gelato.rc:root/ueventd.gelato.rc \
 
 # BT startup
-PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
+PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -59,9 +59,9 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/usr/keychars/gelato_keypad.kcm.bin:system/usr/keychars/gelato_keypad.kcm.bin
 
 # configs
-PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/media_profiles.xml:system/etc/media_profiles.xml 
+#PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/media_profiles.xml:system/etc/media_profiles.xml 
 PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/default.prop:root/default.prop 
-PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/adreno_config.txt:system/etc/adreno_config.txt 	
+#PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/adreno_config.txt:system/etc/adreno_config.txt 	
 
 # Drew's init stuff
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/08dalvik:system/etc/init.d/08dalvik \
@@ -69,14 +69,14 @@ PRODUCT_COPY_FILES += vendor/lge/gelato/proprietary/$(SUB_MODEL)/adreno_config.t
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/95zipalign:system/etc/init.d/95zipalign \
 #    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/etc/init.d/96tweak:system/etc/init.d/96tweak \
 
-PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.gelato.usb.rc:system/etc/init.thunderc.usb.rc \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/profile:system/etc/profile \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/spn-conf.xml:system/etc/spn-conf.xml \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/profile:system/etc/profile \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/spn-conf.xml:system/etc/spn-conf.xml \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.gelato.usb.rc:system/etc/init.thunderc.usb.rc \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.d/05mountext:system/etc/init.d/05mountext \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd \
 
 #WIFI
 PRODUCT_COPY_FILES += \
@@ -85,13 +85,6 @@ PRODUCT_COPY_FILES += \
 # OFFLINE CHARGING
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_01.rle:root/bootimages/opening_01.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_03.rle:root/bootimages/opening_03.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_04.rle:root/bootimages/opening_04.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_05.rle:root/bootimages/opening_05.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_01.rle:root/chargerimages/battery_ani_01.rle \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_02.rle:root/chargerimages/battery_ani_02.rle \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/chargerimages/battery_ani_03.rle:root/chargerimages/battery_ani_03.rle \
@@ -110,7 +103,14 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/sbin/bootlogo:root/sbin/bootlogo \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/sbin/chargerlogo:root/sbin/chargerlogo \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/sbin/ftm_power:root/sbin/ftm_power \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/sbin/ftm_power:root/sbin/ftm_power \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_02.rle:root/bootimages/opening_02.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_03.rle:root/bootimages/opening_03.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_04.rle:root/bootimages/opening_04.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_05.rle:root/bootimages/opening_05.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_06.rle:root/bootimages/opening_06.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_07.rle:root/bootimages/opening_07.rle \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/bootimages/opening_08.rle:root/bootimages/opening_08.rle \
 
 # Offmode charging
 RODUCT_COPY_FILES += $(LOCAL_PATH)/recovery/rmt_storage/rmt_storage:root/sbin/rmt_storage
@@ -119,31 +119,32 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # Backlight
-PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/tsdown:system/bin/tsdown \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/MELFAS_FIRM.bin:system/etc/MELFAS_FIRM.bin
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/tsdown:system/bin/tsdown \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/MELFAS_FIRM.bin:system/etc/MELFAS_FIRM.bin
 
 # Sensors
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/ami306d:system/bin/ami306d \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/hw/sensors.msm7k.so:system/lib/hw/sensors.msm7k.so
+    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/hw/sensors.lge_gelato.so:system/lib/hw/sensors.lge_gelato.so
     
 # 3D
+#Use qcom's ICS libs
 PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libC2D2.so:system/lib/libC2D2.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libgsl.so:system/lib/libgsl.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw
-
+    vendor/qcom/binary/system/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+    vendor/qcom/binary/system/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    vendor/qcom/binary/system/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    vendor/qcom/binary/system/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
+    vendor/qcom/binary/system/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    vendor/qcom/binary/system/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    vendor/qcom/binary/system/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
+    vendor/qcom/binary/system/lib/libC2D2.so:system/lib/libC2D2.so \
+    vendor/qcom/binary/system/lib/libOpenVG.so:system/lib/libOpenVG.so \
+    vendor/qcom/binary/system/lib/libgsl.so:system/lib/libgsl.so \
+    vendor/qcom/binary/system/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+    vendor/qcom/binary/system/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    vendor/qcom/binary/system/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw 
+    
 # Camera
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libcamera.so:obj/lib/libcamera.so \
@@ -156,16 +157,16 @@ PRODUCT_COPY_FILES += \
     
 # Wifi
 PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/wl:system/bin/wl \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/dhcpd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/wlan/cfg.dat:system/etc/firmware/wlan/cfg.dat \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/wlan/qcom_cfg.ini:system/etc/firmware/wlan/qcom_cfg.ini \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/wlan/qcom_fw.bin:system/etc/firmware/wlan/qcom_fw.bin \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/wlan/qcom_cfg.ini:system/etc/firmware/wlan/qcom_cfg.ini \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/wl:system/bin/wl \
     
 
 # SD Card
@@ -174,8 +175,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libaudioeq.so:system/lib/libaudioeq.so
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
 	
 # Device permissions
 PRODUCT_COPY_FILES += \
@@ -195,13 +196,13 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/port-bridge:system/bin/port-bridge \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/qmuxd:system/bin/qmuxd \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/rmt_storage:system/bin/rmt_storage \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/wiperiface:system/bin/wiperiface \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/wiperiface:system/bin/wiperiface \
 
 # Unknown (needed or not?)
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/cnd:system/bin/cnd \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/e2fsck:system/bin/e2fsck
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/bin/e2fsck:system/bin/e2fsck
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.lge.vibrator_amp=125 \
@@ -215,16 +216,12 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libbcmwl.so:system/lib/libbcmwl.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libcm.so:system/lib/libcm.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdiag.so:system/lib/libdiag.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdll.so:system/lib/libdll.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdsm.so:system/lib/libdsm.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdss.so:system/lib/libdss.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdsutils.so:system/lib/libdsutils.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libgsdi_exp.so:system/lib/libgsdi_exp.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libgstk_exp.so:system/lib/libgstk_exp.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libidl.so:system/lib/libidl.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgdrm.so:system/lib/liblgdrm.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgdrmwbxml.so:system/lib/liblgdrmwbxml.so \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgeat.so:system/lib/liblgeat.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgerft.so:system/lib/liblgerft.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libmmgsdilib.so:system/lib/libmmgsdilib.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libnv.so:system/lib/libnv.so \
@@ -242,6 +239,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libsnd.so:system/lib/libsnd.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libwms.so:system/lib/libwms.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libwmsts.so:system/lib/libwmsts.so
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libdll.so:system/lib/libdll.so \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgdrm.so:system/lib/liblgdrm.so \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgdrmwbxml.so:system/lib/liblgdrmwbxml.so \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/liblgeat.so:system/lib/liblgeat.so \
 
 # OMX
 PRODUCT_COPY_FILES += \
@@ -260,23 +261,23 @@ PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxOn2Dec.so:system/lib/libOmxOn2Dec.so \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/libOmxQcelpHwDec.so:system/lib/libOmxQcelpHwDec.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    vendor/lge/thunderc/proprietary/$(SUB_MODEL)/system/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so
+    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxQcelpHwDec.so:system/lib/libOmxQcelpHwDec.so \
+    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
+    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
+    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so
 
 # Bluetooth
 PRODUCT_COPY_FILES += \
     vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/etc/firmware/$(BT_FIRMWARE):system/etc/firmware/$(BT_FIRMWARE)
     
 # IDC file
-PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/usr/idc/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc\
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/usr/idc/touch_mcs6000.idc:system/usr/idc/touch_mcs6000.idc\
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/usr/idc/synaptics-rmi-touchscreen.idc:system/usr/idc/synaptics-rmi-touchscreen.idc
 
 # Apps
-PRODUCT_COPY_FILES += \
-    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/apps/LauncherPro.apk:system/app/LauncherPro.apk
+#PRODUCT_COPY_FILES += \
+#    vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/apps/LauncherPro.apk:system/app/LauncherPro.apk
 
 CDMA_GOOGLE_BASE := android-sprint-us
 CDMA_CARRIER_ALPHA := Virgin_Mobile

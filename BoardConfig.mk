@@ -57,8 +57,8 @@ BOARD_WEXT_NO_COMBO_SCAN        := true
 
 # Kernel
 #TARGET_KERNEL_SOURCE := kernel/lge/thunderc
-TARGET_KERNEL_CONFIG := gelato-perf_defconfig
-#TARGET_PREBUILT_KERNEL := device/lge/thunderc/kernels/BobZ/zImage
+#TARGET_KERNEL_CONFIG := gelato-perf_defconfig
+TARGET_PREBUILT_KERNEL := device/lge/gelato/kernels/rhg135/$(SUB_MODEL)/zImage
 #TARGET_SPECIFIC_HEADER_PATH := device/lge/thunderc/include
 BOARD_KERNEL_CMDLINE := mem=471M console=ttyMSM2,115200n8 androidboot.hardware=gelato
 BOARD_KERNEL_BASE := 0x12200000
@@ -89,11 +89,11 @@ ENABLE_JSC_JIT := true
 
 #Enable OpenGL Hardware Acceleration
 #msm7x27: no support for overlay, bypass, or c2d
-BOARD_EGL_CFG := vendor/lge/gelato/proprietary/$(SUB_MODEL)/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/qcom/binary/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USE_OVERLAY := false
 TARGET_HAVE_BYPASS := false
-TARGET_USES_C2D_COMPOSITION := false
+#TARGET_USES_C2D_COMPOSITION := false
 TARGET_USES_GENLOCK := true
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true
 BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
@@ -124,5 +124,6 @@ BOARD_USE_SKIA_LCDTEXT := true
 #OFFLINE CHARGING
 BOARD_GLOBAL_CFLAGS += -DCHARGERMODE_CMDLINE_NAME='"lge.reboot"' -DCHARGERMODE_CMDLINE_VALUE='"pwroff"'
 BOARD_USES_RECOVERY_CHARGEMODE := false
-BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c
+#BOARD_CUSTOM_GRAPHICS := ../../../device/lge/thunderc/recovery/graphics.c
 
+DEVICE_RESOLUTION := 320x480
